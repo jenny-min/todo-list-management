@@ -3,7 +3,6 @@ package com.example.todolistmanager.controllers;
 import com.example.todolistmanager.entities.Category;
 import com.example.todolistmanager.services.interfaces.CategoryService;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +16,13 @@ public class CategoryController {
     @GetMapping
     public String loadDashboard(Model model) {
         model.addAttribute("categories", ct.getAllCategories());
-        return "CategoryManager";
+        return "categories/CategoryManager";
     }
 
     @GetMapping("/create")
     private String createCategory(Model model) {
         model.addAttribute("category", new Category());
-        return "CreateCategory";
+        return "categories/CreateCategory";
     }
 
     @PostMapping()
@@ -42,7 +41,7 @@ public class CategoryController {
     private String editCategory(@ModelAttribute("id") Long id, Model model) {
         Category category = ct.findById(id);
         model.addAttribute("category", category);
-        return "EditCategory";
+        return "categories/EditCategory";
     }
 
     @PostMapping("/save")

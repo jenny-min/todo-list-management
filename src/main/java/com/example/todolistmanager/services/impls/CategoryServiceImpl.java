@@ -21,11 +21,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category createCategory(Category newCategory) {
-        return cr.save(newCategory);
-    }
-
-    @Override
     public Category save(Category category) {
         return cr.save(category);
     }
