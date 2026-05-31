@@ -2,14 +2,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Create Category</title>
+    <title>Edit Category</title>
 </head>
 <body>
-    <h1>CREATE CATEGORY</h1>
+    <h1>EDIT CATEGORY</h1>
     <form method="post" th:object="${category}" th:action="@{/categories/save}">
         <input type="hidden" th:field="*{id}">
-        <input placeholder="Enter category name" th:field="*{name}" type="text">
-        <input placeholder="Enter description" th:field="*{description}" type="text">
+        <input placeholder="Enter new category name" th:field="*{name}" type="text">
+        <input placeholder="Enter new description" th:field="*{description}" type="text">
 
         <button type="submit">Save</button>
     </form>

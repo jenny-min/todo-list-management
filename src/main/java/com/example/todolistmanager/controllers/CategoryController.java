@@ -26,7 +26,7 @@ public class CategoryController {
         return "CreateCategory";
     }
 
-    @PostMapping("/save")
+    @PostMapping()
     public String save(@ModelAttribute("category") Category category) {
         ct.save(category);
         return "redirect:/categories";
@@ -35,6 +35,19 @@ public class CategoryController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         ct.delete(id);
+        return "redirect:/categories";
+    }
+
+    @GetMapping("/edit/{id}")
+    private String editCategory(@ModelAttribute("id") Long id, Model model) {
+        Category category = ct.findById(id);
+        model.addAttribute("category", category);
+        return "EditCategory";
+    }
+
+    @PostMapping("/save")
+    public String saveEdit(@ModelAttribute("category") Category category) {
+        ct.save(category);
         return "redirect:/categories";
     }
 }
