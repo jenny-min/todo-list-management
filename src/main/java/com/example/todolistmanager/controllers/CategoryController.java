@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,6 +29,12 @@ public class CategoryController {
     @PostMapping("/save")
     public String save(@ModelAttribute("category") Category category) {
         ct.save(category);
+        return "redirect:/categories";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        ct.delete(id);
         return "redirect:/categories";
     }
 }

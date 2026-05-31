@@ -2,6 +2,7 @@ package com.example.todolistmanager.services.impls;
 
 import com.example.todolistmanager.entities.Category;
 import com.example.todolistmanager.repositories.CategoryRepository;
+import com.example.todolistmanager.repositories.TodoRepository;
 import com.example.todolistmanager.services.interfaces.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository cr;
+    private final TodoRepository tr;
+
     @Override
     public List<Category> getAllCategories() {
         return cr.findAll();
@@ -29,6 +32,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void delete(Long id) {
+        Long totalTodo = tr.countByCategoryId(id);
+        if (totalTodo > 0) {
+            throw new RuntimeException("Cannot delete category with " + id + " because it contains todos");
+        }
         cr.deleteById(id);
     }
 

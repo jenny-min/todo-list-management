@@ -24,7 +24,7 @@
                 <td th:text="${category.getDescription()}"></td>
                 <td>
                     <a>Edit</a>
-                    <a>Delete</a>
+                    <a th:href="'/categories/delete/' + ${category.getId()}">Delete</a>
                 </td>
             </tr>
         </tbody>
