@@ -25,4 +25,14 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Todo> todos;
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", todos=" + todos +
+                '}';
+    }
 }

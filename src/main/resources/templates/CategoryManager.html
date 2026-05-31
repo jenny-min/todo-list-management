@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Manager</title>
+</head>
+<body>
+    <h1>WELCOME TO CATEGORY MANAGER</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="category, intStar : ${categories}">
+                <td th:text="${intStar.count}"></td>
+                <td th:text="${category.getId()}"></td>
+                <td th:text="${category.getName()}"></td>
+                <td th:text="${category.getDescription()}"></td>
+                <td>
+                    <a>Edit</a>
+                    <a>Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/categories/create}">Create</a>
+</body>
+</html>
