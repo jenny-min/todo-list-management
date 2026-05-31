@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Manager</title>
+</head>
+<body>
+    <h1>TODO MANAGER</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Attachment</th>
+                <th>CreatedAt</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="todo, inteStar : ${todos}">
+                <td th:text="${inteStar.count}"></td>
+                <td th:text="${todo.getId()}"></td>
+                <td th:text="${todo.getTitle()}"></td>
+                <td th:text="${todo.getDescription()}"></td>
+                <td th:text="${todo.getPriority()}"></td>
+                <td th:text="${todo.getStatus()}"></td>
+                <td th:text="${todo.getCreatedAt()}"></td>
+                <td th:text="${todo.getCategory()}"></td>
+                <td>
+                    <a>Edit</a>
+                    <a>Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/todos/create}">Create Task</a>
+</body>
+</html>
